@@ -1,4 +1,5 @@
 import os
+import random
 import time
 import wave
 import pyaudio
@@ -36,15 +37,23 @@ def get_audio():
 
     try:
         said = r.recognize_google(audio, language='en-in')
-        print(f"User said {query}\n")
+        print(f"User said {said}\n")
     except Exception as e:
         print(e) 
         print("Error")
         return "None"
-    return query
+    return said
 
 
-speak("")
-get_audio()
+greetings = ['I just woke up how are you today ?', 'I had a pretty nice sleep hope you also had same', 'What a lovely day ', 'My bed is very comfortable but i will get up for u ']
+
+speak(random.choice(greetings))
+
+
+words = get_audio()
+
+if "hello" or "hi" in words:
+    hielloreply = ['Hello how are you today', 'Hello There Its Fun To Be With you again' , 'Hi', 'Hello']
+    speak(random.choice(hielloreply))
 
 
